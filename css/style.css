@@ -1,0 +1,432 @@
+:root {
+    --primary-orange: #FF8C00;
+    --dark-orange: #e67e22;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+}
+
+.text-orange { color: var(--primary-orange); }
+.bg-orange { background-color: var(--primary-orange); }
+
+.navbar .nav-link:hover, .navbar .nav-link.active {
+    color: var(--primary-orange) !important;
+}
+
+.btn-orange {
+    background-color: var(--primary-orange);
+    color: white;
+    border-radius: 50px;
+}
+
+.btn-orange:hover {
+    background-color: var(--dark-orange);
+    color: white;
+}
+
+.btn-outline-orange {
+    border-color: var(--primary-orange);
+    color: var(--primary-orange);
+    border-radius: 50px;
+}
+
+.btn-outline-orange:hover {
+    background-color: var(--primary-orange);
+    color: white;
+}
+
+/* Hero Section Custom */
+.hero-img {
+    height: 80vh;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.hero-caption {
+    bottom: 25% !important;
+}
+
+/* Product Card */
+.product-card {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Feature Box */
+.feature-box {
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.feature-box:hover {
+    background: #fff5e6;
+    border-radius: 15px;
+}
+
+.category-item img {
+    transition: 0.3s;
+    border: 3px solid transparent;
+}
+
+.category-item:hover img {
+    border-color: var(--primary-orange);
+    transform: scale(1.05);
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+/* ล็อคขนาดวงกลมหมวดหมู่ */
+.category-img-wrapper {
+    width: 180px;         /* ปรับขนาดความกว้างที่ต้องการ */
+    height: 180px;        /* ต้องเท่ากับความกว้างเพื่อให้เป็นจัตุรัสก่อนทำวงกลม */
+    margin: 0 auto;       /* จัดกึ่งกลาง */
+    overflow: hidden;     /* ตัดส่วนเกินของรูปออก */
+    border-radius: 50%;   /* ทำเป็นวงกลม */
+    border: 4px solid white; /* เพิ่มขอบสีขาวให้ดูแพงขึ้น */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* เพิ่มเงาให้นุ่มนวล */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.category-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* สำคัญ: ล็อคให้รูปอยู่กึ่งกลางและไม่เบี้ยว */
+    object-position: center;
+}
+
+/* เอฟเฟกต์เวลาเอาเมาส์ไปชี้ (Hover) */
+.category-item:hover .category-img-wrapper {
+    transform: scale(1.05);           /* ขยายขึ้นเล็กน้อย */
+    border-color: var(--primary-orange); /* เปลี่ยนสีขอบเป็นสีส้ม */
+}
+
+.category-item:hover h6 {
+    color: var(--primary-orange) !important; /* เปลี่ยนสีตัวอักษรเป็นสีส้ม */
+}
+
+/* ปรับขนาดวงกลมบนมือถือให้เล็กลงหน่อยเพื่อความสวยงาม */
+@media (max-width: 576px) {
+    .category-img-wrapper {
+        width: 130px;
+        height: 130px;
+    }
+}
+/* ล็อคขนาดรูปสินค้าให้เท่ากันทุกใบ */
+.product-img-container {
+    width: 100%;
+    aspect-ratio: 3/4; /* สัดส่วนแนวตั้งยอดนิยมสำหรับเสื้อผ้า */
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.product-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ถ้ารูปขนาดไม่เท่ากัน มันจะตัดให้พอดีสัดส่วน 3/4 เอง */
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.1); /* เวลาเมาส์ชี้ รูปจะซูมเข้านิดๆ ดูพรีเมียม */
+}
+
+.text-orange {
+    color: #FF8C00 !important;
+}
+/* สไตล์พิเศษสำหรับหน้า About Us */
+.about-header {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('../img/Artboard/Artboard 1.png'); /* เปลี่ยนเป็นรูปที่สื่อถึงบึงกาฬหรือผ้าหมักโคลน */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+.text-orange {
+    color: #FF8C00 !important;
+}
+
+.bg-soft-orange {
+    background-color: #fff5ed;
+}
+
+.img-frame {
+    position: relative;
+    padding: 10px;
+}
+
+.img-frame::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100px;
+    height: 100px;
+    border-top: 5px solid #FF8C00;
+    border-left: 5px solid #FF8C00;
+    z-index: -1;
+}
+
+.italic-text {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.border-orange {
+    border-color: #FF8C00 !important;
+}
+.navbar {
+    transition: top 0.4s ease-in-out; /* ทำให้เมนูเลื่อนขึ้น-ลงแบบนุ่มนวล */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1030;
+}
+
+/* ตกแต่งส่วน About Us หน้าแรก */
+.about-preview-img {
+    position: relative;
+}
+
+.about-preview-img::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--primary-orange);
+    top: 20px;
+    left: 20px;
+    z-index: -1;
+    border-radius: 15px;
+}
+/* ล็อคให้ Navbar อยู่ด้านบนและมี Effect การเคลื่อนที่ */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1050;
+    transition: transform 0.3s ease-in-out; /* ใช้ transform จะลื่นไหลกว่า top */
+    background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* คลาสสำหรับสั่งให้ Navbar เลื่อนขึ้นไปซ่อน */
+.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+/* คลาสสำหรับสั่งให้ Navbar ปรากฏตัวออกมา */
+.navbar-visible {
+    transform: translateY(0);
+}
+/* เอฟเฟกต์ซูมรูปสินค้า */
+.img-zoom {
+    transition: transform 0.5s ease;
+}
+.product-card:hover .img-zoom {
+    transform: scale(1.1);
+}
+
+.product-card {
+    transition: 0.3s;
+    border-radius: 15px;
+}
+.product-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* ปรับสีปุ่ม */
+.btn-orange {
+    background-color: var(--primary-orange);
+    color: white;
+    border: none;
+}
+.btn-orange:hover {
+    background-color: var(--dark-orange);
+    color: white;
+}
+.product-img {
+    transition: transform 0.5s ease;
+    aspect-ratio: 1/1; /* ล็อคให้รูปสินค้าเป็นจัตุรัส */
+    object-fit: cover;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.1);
+}
+
+.product-card {
+    transition: 0.3s;
+}
+
+.product-card:hover h6 {
+    color: var(--primary-orange) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+}
+
+/* แบนเนอร์หมวดหมู่สินค้า */
+.category-banner {
+    position: relative;
+    display: block;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    color: white;
+}
+
+.category-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+    z-index: 1;
+}
+
+.category-text {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    z-index: 2;
+}
+
+.category-banner:hover .category-bg-img {
+    transform: scale(1.1);
+}
+
+.category-banner:hover .category-overlay {
+    background: linear-gradient(to top, rgba(255, 140, 0, 0.7), rgba(0,0,0,0.1)); /* เปลี่ยนเป็นสีส้มเมื่อชี้ */
+}
+
+/* ปุ่มย้อนกลับ */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    color: #666;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background-color: var(--primary-orange);
+    color: white;
+    border-color: var(--primary-orange);
+}
+.btn-back {
+    position: fixed;    /* ทำให้ปุ่มลอยค้างไว้ */
+    top: 120px;         /* ระยะห่างจากด้านบน (ปรับให้พ้นแถบเมนู) */
+    left: 40px;         /* ขยับออกมาจากขอบซ้าย (เดิม 20px เพิ่มเป็น 40px) */
+    display: inline-flex;
+    align-items: center;
+    color: #444;
+    background-color: white; 
+    text-decoration: none;
+    border: 1px solid #eee;
+    padding: 10px 22px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* เพิ่มเงานุ่มๆ ให้ดูพรีเมียม */
+}
+
+.btn-back:hover {
+    background-color: var(--primary-orange);
+    color: white !important;
+    border-color: var(--primary-orange);
+    transform: translateX(-5px); /* เวลาชี้ให้ขยับถอยหลังนิดๆ เหมือนสัญลักษณ์ย้อนกลับ */
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.2);
+}
+
+/* ปรับระยะสำหรับมือถือ ไม่ให้ปุ่มใหญ่เกินหน้าจอ */
+@media (max-width: 576px) {
+    .btn-back {
+        top: 90px;
+        left: 20px; /* มือถือจอแคบ ให้ขยับกลับไปนิดนึง */
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+/* ตกแต่งส่วนผู้จัดทำ */
+.profile-row {
+    padding: 20px 0;
+    transition: 0.3s;
+}
+
+.creator-img-frame {
+    position: relative;
+    z-index: 1;
+}
+
+.creator-img-frame img {
+    width: 100%;
+    height: 350px; /* ล็อคความสูงรูปภาพให้เท่ากันเป๊ะ */
+    object-fit: cover; /* ป้องกันรูปเบี้ยว */
+    border: 5px solid white;
+}
+
+/* กรอบสีส้มด้านหลัง - ตกแต่งสลับซ้ายขวา */
+.creator-img-frame::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-orange);
+    z-index: -1;
+    border-radius: 1rem;
+    transition: 0.4s;
+}
+
+.creator-img-frame.left::after {
+    top: 20px;
+    left: -20px;
+}
+
+.creator-img-frame.right::after {
+    top: 20px;
+    right: -20px;
+}
+
+.profile-row:hover .creator-img-frame::after {
+    transform: scale(1.05);
+}
+
+.divider-center {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-orange);
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+.ls-2 {
+    letter-spacing: 2px;
+}
