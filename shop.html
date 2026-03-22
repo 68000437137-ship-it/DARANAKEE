@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สินค้าทั้งหมด | DARANAKEE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+        
+        body { padding-top: 100px; font-family: 'Sarabun', sans-serif; background-color: #fcfcfc; }
+        .text-orange { color: #ff9800 !important; }
+        .bg-orange { background-color: #ff9800 !important; color: white; }
+        
+        /* สไตล์การ์ดสินค้า */
+        .product-card { 
+            transition: 0.3s; 
+            border: none !important; 
+            background: white; 
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .product-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+        }
+        .product-img { height: 280px; object-fit: cover; }
+        
+        /* ปุ่มย้อนกลับ */
+        .btn-back { 
+            text-decoration: none; 
+            color: #555; 
+            padding: 8px 15px; 
+            background: #eee;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            transition: 0.3s;
+            margin-bottom: 25px;
+        }
+        .btn-back:hover { color: #ff9800; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo/LOGO.png" width="75" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mx-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.html">เกี่ยวกับเรา</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">สินค้า</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="shop-clothing.html">เสื้อผ้า</a></li>
+                            <li><a class="dropdown-item" href="shop-scarves.html">ผ้าพันคอ</a></li>
+                            <li><a class="dropdown-item" href="shop-cap.html">หมวก</a></li>
+                            <li><a class="dropdown-item" href="shop-Souvenirs.html">ของฝาก/ของที่ระลึก</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="shop.html">สินค้าทั้งหมด</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creators.html">คณะผู้จัดทำ</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="cart.html" class="text-dark position-relative text-decoration-none">
+                        <i class="fas fa-shopping-bag fa-lg"></i>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange badge-cart">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container py-4">
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-arrow-left me-2"></i> กลับหน้าหลัก
+        </a>
+
+        <div class="mb-5">
+            <h2 class="fw-bold">คอลเลกชันดารานาคี</h2>
+            <p class="text-muted">มรดกแห่งภูมิปัญญาไทย สู่ไลฟ์สไตล์ที่ทันสมัย</p>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-cap.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/ผลิตภัณ/หมวก01.jpg" class="card-img-top product-img" alt="หมวกแก๊ป">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">หมวกแก๊ปผ้าฝ้ายหมักโคลนนาคี</h6>
+                            <p class="text-orange fw-bold mb-0">350 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-cap2.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/ผลิตภัณ/หมวก03.jpg" class="card-img-top product-img" alt="หมวกบักเก็ต">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">หมวกบักเก็ตลายนาคา</h6>
+                            <p class="text-orange fw-bold mb-0">350 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-Souvenirs.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/ผลิตภัณ/พวงกุญแจปลา03.jpg" class="card-img-top product-img" alt="พวงกุญแจ">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">พวงกุญแจปลา</h6>
+                            <p class="text-orange fw-bold mb-0">450 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-Souvenirs2.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/ผลิตภัณ/กระเป๋าผ้า02.jpg" class="card-img-top product-img" alt="กระเป๋า">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">กระเป๋าผ้าหมักโคลนนาคี</h6>
+                            <p class="text-orange fw-bold mb-0">450 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-Souvenirs3.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/ผลิตภัณ/ยางมัดผม03.jpg" class="card-img-top product-img" alt="ยางมัดผม">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">ยางมัดผมแฮนด์เมด</h6>
+                            <p class="text-orange fw-bold mb-0">450 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-scarves.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/ผลิตภัณ/ผ้าพันคอ03.jpg" class="card-img-top product-img" alt="ผ้าพันคอ">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">ผ้าพันคอโคลนนาคี (คลาสสิก)</h6>
+                            <p class="text-orange fw-bold mb-0">450 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-clothing.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/เสื้อผ้า/545043484_815921674304177_8050394124561170545_n.jpg" class="card-img-top product-img" alt="เดรส">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">เดรส "ศิริธารา"</h6>
+                            <p class="text-orange fw-bold mb-0">2,450 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="product-detail-clothing2.html" class="text-decoration-none">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img src="img/เสื้อผ้า/541657902_813811521181859_30815570885243073_n.jpg" class="card-img-top product-img" alt="เสื้อผ้า">
+                        <div class="card-body">
+                            <h6 class="text-dark fw-bold mb-1">เสื้อผ้าฝ้ายหมักโคลนนาคี</h6>
+                            <p class="text-orange fw-bold mb-0">350 บาท</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div> </div>
+
+    <footer class="footer pt-5 pb-3 border-top mt-5 bg-white text-center">
+        <div class="container">
+            <img src="img/logo/LOGO.png" width="80" class="mb-3">
+            <p class="small text-muted">© 2026 Daranakee. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function updateCartBadge() {
+            // ดึงข้อมูลตะกร้าจาก localStorage มานับ
+            const cart = JSON.parse(localStorage.getItem('daranakee_cart')) || [];
+            const badge = document.getElementById('cart-count');
+            if(badge) badge.innerText = cart.length;
+        }
+        
+        // รันทันทีที่โหลดหน้า
+        window.onload = updateCartBadge;
+        // อัปเดตเมื่อมีการเพิ่มสินค้าจากแท็บอื่น
+        window.addEventListener('storage', updateCartBadge);
+    </script>
+       <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row g-4 small">
+                <div class="col-md-4">
+                    <img src="img/logo/LOGO.png" width="60" class="mb-3 bg-white p-1 rounded">
+                    <p class="text-secondary">วิสาหกิจชุมชนดารานาคี จ.บึงกาฬ 38000</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h6>ติดตามเรา</h6>
+                    <div class="h4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end text-secondary">
+                    <h6>ติดต่อสอบถาม</h6>
+                    <p class="mb-0">โทร: 083-3573456</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-center small text-secondary mb-0">© 2026 Daranakee. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

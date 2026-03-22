@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ดารานาคี | ผ้าไหมไทยร่วมสมัย</title>
+     <link rel="icon" type="image/png" href="img/logo/LOGO.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:300,400,500&display=swap">
+    <style>
+        :root { --orange-main: #ff9800; --orange-hover: #e68a00; }
+        body { font-family: 'Kanit', sans-serif; background-color: #fdfdfd; }
+        
+        .btn-orange { background-color: var(--orange-main); color: white; border: none; transition: 0.3s; }
+        .btn-orange:hover { background-color: var(--orange-hover); color: white; transform: scale(1.02); }
+        .text-orange { color: var(--orange-main) !important; }
+        .bg-orange { background-color: var(--orange-main) !important; }
+        
+        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        
+        /* 1. ปรับขนาด Banner ให้เล็กลง */
+        .hero-img { height: 50vh; object-fit: cover; filter: brightness(0.8); }
+        .hero-caption { bottom: 15%; z-index: 10; }
+
+        .category-img-wrapper { 
+            width: 100px; height: 100px; margin: 0 auto; overflow: hidden; 
+            border-radius: 50%; border: 3px solid #eee; transition: 0.3s;
+        }
+        .category-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 2. ปรับขนาดรูปภาพสินค้าให้เล็กลงและเท่ากัน */
+        .product-card { transition: 0.3s; border-radius: 15px; overflow: hidden; background: white; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+        
+        /* สร้าง Container ล็อกขนาดรูปสินค้า */
+        .product-img-wrapper {
+            height: 220px; /* ปรับความสูงรูปสินค้าที่นี่ */
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* กันรูปเบี้ยว */
+        }
+        
+        .badge-cart { font-size: 0.7rem; }
+    </style>
+</head>
+<body>
+
+     <nav class="navbar navbar-expand-lg shadow-sm sticky-top bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo/LOGO.png" width="75" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mx-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.html">เกี่ยวกับเรา</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">สินค้า</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="shop-clothing.html">เสื้อผ้า</a></li>
+                            <li><a class="dropdown-item" href="shop-scarves.html">ผ้าพันคอ</a></li>
+                            <li><a class="dropdown-item" href="shop-cap.html">หมวก</a></li>
+                            <li><a class="dropdown-item" href="shop-Souvenirs.html">ของฝาก/ของที่ระลึก</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="shop.html">สินค้าทั้งหมด</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creators.html">คณะผู้จัดทำ</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="cart.html" class="text-dark position-relative text-decoration-none">
+                        <i class="fas fa-shopping-bag fa-lg"></i>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange badge-cart">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/Artboard/Artboard 1.png" class="d-block w-100 hero-img" alt="Banner">
+                <div class="carousel-caption hero-caption text-start">
+                    <h2 class="fw-bold">ดารานาคี – ผ้าไหมไทยร่วมสมัย</h2>
+                    <p>ความงดงามของผ้าไหมไทย ที่ออกแบบเพื่อคนรุ่นใหม่</p>
+                    <div class="mt-3">
+                        <a href="shop.html" class="btn btn-orange px-4">ช้อปเลย</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-4">
+        <div class="container text-center">
+            <div class="row g-4">
+                <div class="col-6 col-md-3"><i class="fas fa-gem text-orange fa-lg mb-2"></i><p class="small mb-0">ผ้าไหมพรีเมียม</p></div>
+                <div class="col-6 col-md-3"><i class="fas fa-leaf text-orange fa-lg mb-2"></i><p class="small mb-0">สีย้อมธรรมชาติ</p></div>
+                <div class="col-6 col-md-3"><i class="fas fa-shipping-fast text-orange fa-lg mb-2"></i><p class="small mb-0">ส่งไว 1-3 วัน</p></div>
+                <div class="col-6 col-md-3"><i class="fas fa-heart text-orange fa-lg mb-2"></i><p class="small mb-0">สนับสนุนชุมชน</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h4 class="fw-bold mb-4">เลือกซื้อตามหมวดหมู่</h4>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a href="shop-cap.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/ผลิตภัณ/หมวก01.jpg"></div>
+                        <p class="mt-2 fw-bold small">หมวก</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="shop-scarves.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/ผลิตภัณ/ผ้าพันคอ03.jpg"></div>
+                        <p class="mt-2 fw-bold small">ผ้าพันคอ</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="shop-clothing.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/เสื้อผ้า/543121919_813811514515193_299888918633868360_n.jpg"></div>
+                        <p class="mt-2 fw-bold small">เสื้อผ้า</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="shop-Souvenirs.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/ผลิตภัณ/ยางมัดผม04.jpg"></div>
+                        <p class="mt-2 fw-bold small">ของฝาก</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h4 class="text-center fw-bold mb-4">🔥 สินค้าขายดี</h4>
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card h-100 product-card border-0 shadow-sm p-2">
+                        <a href="product-detail-clothing.html" class="text-decoration-none text-dark">
+                            <div class="product-img-wrapper">
+                                <img src="img/เสื้อผ้า/545043484_815921674304177_8050394124561170545_n.jpg" alt="Product">
+                            </div>
+                            <div class="card-body px-0 text-center pb-2">
+                                <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">เดรส "ศิริธารา"</h6>
+                                <p class="text-orange mb-2 small">฿2,450</p>
+                            </div>
+                        </a>
+                        <button class="btn btn-orange btn-sm w-100" onclick="addToCart('เดรส ศิริธารา', 2450, 'img/เสื้อผ้า/545043484_815921674304177_8050394124561170545_n.jpg')">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card h-100 product-card border-0 shadow-sm p-2">
+                        <a href="product-detail-cap2.html" class="text-decoration-none text-dark">
+                            <div class="product-img-wrapper">
+                                <img src="img/ผลิตภัณ/หมวก03.jpg" alt="หมวก">
+                            </div>
+                            <div class="card-body px-0 text-center pb-2">
+                                <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">หมวกบักเก็ตลายนาคา</h6>
+                                <p class="text-orange mb-2 small">฿350</p>
+                            </div>
+                        </a>
+                        <button class="btn btn-orange btn-sm w-100" onclick="addToCart('หมวกบักเก็ตลายนาคา', 350, 'img/ผลิตภัณ/หมวก03.jpg')">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card h-100 product-card border-0 shadow-sm p-2">
+                        <a href="product-detail-scarves2.html" class="text-decoration-none text-dark">
+                            <div class="product-img-wrapper">
+                                <img src="img/ผลิตภัณ/ผ้าพันคอ06.jpg" alt="ผ้าพันคอ">
+                            </div>
+                            <div class="card-body px-0 text-center pb-2">
+                                <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">ผ้าพันคอหมักโคลน</h6>
+                                <p class="text-orange mb-2 small">฿490</p>
+                            </div>
+                        </a>
+                        <button class="btn btn-orange btn-sm w-100" onclick="addToCart('ผ้าพันคอหมักโคลน', 490, 'img/ผลิตภัณ/ผ้าพันคอ06.jpg')">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="py-5 bg-light">
+   
+</section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="img/Artboard/Artboard 6.png" class="img-fluid rounded-4 shadow" alt="Story">
+                </div>
+                <div class="col-md-6 ps-md-5">
+                    <h2 class="fw-bold text-orange mb-4">เรื่องราวของดารานาคี</h2>
+                    <p class="text-secondary">ดารานาคี คือแบรนด์ที่นำผ้าไหมไทยจากชุมชน มาพัฒนาให้ทันสมัย เพื่อให้คนรุ่นใหม่ได้สัมผัสความงดงามของภูมิปัญญาไทยที่ยั่งยืน</p>
+                    <a href="aboutus.html" class="btn btn-outline-orange mt-3">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-orange text-white text-center">
+        <div class="container">
+            <h2 class="fw-bold mb-5">เสียงจากลูกค้า</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="review-card p-4">
+                        <div class="mb-3"><i class="fas fa-star text-warning" v-for="i in 5"></i></div>
+                        <p>"ผ้าไหมสวยมาก เนื้อดี ใส่แล้วดูแพงมาก"</p>
+                        <small>- คุณรินดา</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card p-4">
+                        <div class="mb-3"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></div>
+                        <p>"ส่งไวมาก เป็นของฝากที่ดูดีที่สุดเลยค่ะ"</p>
+                        <small>- คุณเมทินี</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card p-4">
+                        <div class="mb-3"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></div>
+                        <p>"งานตัดเย็บเนี๊ยบมาก ผ้าไม่หด สีไม่ตก"</p>
+                        <small>- คุณสิริ</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 text-center">
+        <div class="container">
+            <div class="cta-banner p-5 rounded-4 shadow-sm bg-light">
+                <h2 class="fw-bold mb-3">✨ ค้นพบความงามของผ้าไหมไทย</h2>
+                <p class="mb-4">เลือกซื้อสินค้าของเราได้แล้ววันนี้ พร้อมโปรโมชั่นพิเศษสำหรับสมาชิกใหม่</p>
+                <a href="shop.html" class="btn btn-orange btn-lg px-5">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row g-4 small">
+                <div class="col-md-4">
+                    <img src="img/logo/LOGO.png" width="60" class="mb-3 bg-white p-1 rounded">
+                    <p class="text-secondary">วิสาหกิจชุมชนดารานาคี จ.บึงกาฬ 38000</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h6>ติดตามเรา</h6>
+                    <div class="h4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end text-secondary">
+                    <h6>ติดต่อสอบถาม</h6>
+                    <p class="mb-0">โทร: 083-3573456</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-center small text-secondary mb-0">© 2026 Daranakee. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function addToCart(name, price, img) {
+            let cart = JSON.parse(localStorage.getItem('daranakee_cart')) || [];
+            let existingItem = cart.find(item => item.name === name);
+            if (existingItem) { 
+                existingItem.qty += 1; 
+            } else { 
+                cart.push({ name, price, img, qty: 1 }); 
+            }
+            localStorage.setItem('daranakee_cart', JSON.stringify(cart));
+            updateCartIcon();
+            if(confirm(`เพิ่ม ${name} เรียบร้อย! ต้องการไปที่หน้าตะกร้าสินค้าเลยหรือไม่?`)) {
+                window.location.href = 'cart.html';
+            }
+        }
+
+        function updateCartIcon() {
+            let cart = JSON.parse(localStorage.getItem('daranakee_cart')) || [];
+            let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.innerText = totalQty;
+            }
+        }
+        window.onload = updateCartIcon;
+    </script>
+</body>
+</html>

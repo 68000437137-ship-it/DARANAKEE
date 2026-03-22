@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตะกร้าสินค้า | DARANAKEE</title> <link rel="icon" type="image/png" href="img/logo/LOGO.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:300,400,500&display=swap">
+    <style>
+        :root { --orange-main: #ff9800; --orange-hover: #e68a00; }
+        body { padding-top: 100px; background-color: #f8f9fa; font-family: 'Kanit', sans-serif; }
+        
+        /* Cart Styles */
+        .cart-card { border-radius: 15px; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .product-img { 
+            width: 80px; height: 80px; 
+            object-fit: cover; border-radius: 10px; background-color: #eee;
+        }
+        .btn-orange { background-color: var(--orange-main); color: white; border-radius: 50px; border: none; transition: 0.3s; }
+        .btn-orange:hover { background-color: var(--orange-hover); color: white; transform: translateY(-2px); }
+        .text-orange { color: var(--orange-main) !important; }
+        
+        /* QR Code Modal Styles */
+        .modal-content { border-radius: 20px; border: none; }
+        .qr-container { background: white; padding: 20px; border-radius: 15px; text-align: center; }
+        #qr-image { 
+            width: 100%; 
+            max-width: 250px; 
+            height: auto; 
+            border: 1px solid #eee; 
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg shadow-sm sticky-top bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo/LOGO.png" width="75" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mx-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.html">เกี่ยวกับเรา</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">สินค้า</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="shop-clothing.html">เสื้อผ้า</a></li>
+                            <li><a class="dropdown-item" href="shop-scarves.html">ผ้าพันคอ</a></li>
+                            <li><a class="dropdown-item" href="shop-cap.html">หมวก</a></li>
+                            <li><a class="dropdown-item" href="shop-Souvenirs.html">ของฝาก/ของที่ระลึก</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="shop.html">สินค้าทั้งหมด</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creators.html">คณะผู้จัดทำ</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="cart.html" class="text-dark position-relative text-decoration-none">
+                        <i class="fas fa-shopping-bag fa-lg"></i>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange badge-cart">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container py-4">
+        <h3 class="fw-bold mb-4 text-center">ตะกร้าสินค้าของคุณ</h3>
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="card cart-card p-4">
+                    <div id="cart-content">
+                        </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card cart-card p-4 text-center shadow-sm">
+                    <h5 class="fw-bold mb-4">ยอดรวมทั้งหมด</h5>
+                    <h2 class="text-orange fw-bold mb-4" id="total-price-display">฿ 0</h2>
+                    <hr>
+                    <button class="btn btn-orange btn-lg w-100 fw-bold py-3 mb-2" onclick="checkout()">
+                        <i class="fas fa-shopping-cart me-2"></i> สั่งซื้อสินค้า
+                    </button>
+                    <p class="text-muted small">ราคานี้รวมภาษีมูลค่าเพิ่มแล้ว</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-orange text-white border-0">
+                    <h5 class="modal-title fw-bold">ชำระเงินผ่าน PromptPay</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center qr-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Thai_QR_Payment_logo.svg" height="40" class="mb-3">
+                    
+                    <div class="d-block">
+                        <img src="" id="qr-image" class="mb-3" alt="QR Code กำลังโหลด...">
+                    </div>
+
+                    <h4 class="fw-bold mb-1">ยอดชำระ: <span class="text-orange" id="modal-total-price">฿ 0</span></h4>
+                    <p class="text-muted small mb-3">ชื่อบัญชี: วิสาหกิจชุมชนดารานาคี</p>
+                    
+                    <div class="alert alert-warning py-2 small border-0">
+                        <i class="fas fa-info-circle me-1"></i> สแกนจ่ายแล้ว โปรดส่งสลิปมาที่ <br>
+                        <strong>Line: @daranakee</strong>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary w-100 rounded-pill" data-bs-dismiss="modal">ปิดหน้าต่าง</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ฟังก์ชันแสดงรายการสินค้าในตะกร้า
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('daranakee_cart')) || [];
+            const container = document.getElementById('cart-content');
+            let total = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="fas fa-shopping-basket fa-3x mb-3 text-muted"></i>
+                        <p class="text-muted">ตะกร้าของคุณยังว่างเปล่า</p>
+                        <a href="shop.html" class="btn btn-outline-orange btn-sm mt-2">ไปเลือกซื้อสินค้า</a>
+                    </div>`;
+                document.getElementById('total-price-display').innerText = '฿ 0';
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => {
+                const subTotal = item.price * (item.qty || 1);
+                total += subTotal;
+                const imagePath = item.img ? item.img : 'img/logo/LOGO.png'; 
+                
+                return `
+                    <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                        <img src="${imagePath}" class="product-img me-3" onerror="this.src='https://via.placeholder.com/100'">
+                        <div class="flex-grow-1">
+                            <h6 class="fw-bold mb-0">${item.name}</h6>
+                            <p class="small text-muted mb-0">ราคา: ฿${item.price.toLocaleString()} x ${item.qty || 1}</p>
+                        </div>
+                        <div class="text-end">
+                            <p class="fw-bold text-orange mb-0">฿${subTotal.toLocaleString()}</p>
+                            <button class="btn btn-sm text-danger p-0 border-0 bg-transparent" onclick="removeItem(${index})">
+                                <small><i class="fas fa-trash-alt me-1"></i>ลบออก</small>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('total-price-display').innerText = '฿ ' + total.toLocaleString();
+            document.getElementById('modal-total-price').innerText = '฿ ' + total.toLocaleString();
+            
+            return total; // ส่งค่า total กลับไปใช้ต่อ
+        }
+
+        // ฟังก์ชันลบสินค้า
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('daranakee_cart'));
+            cart.splice(index, 1);
+            localStorage.setItem('daranakee_cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // ฟังก์ชันกดสั่งซื้อเพื่อดึง QR Code ตามยอดจริง
+        function checkout() {
+            const cart = JSON.parse(localStorage.getItem('daranakee_cart')) || [];
+            if (cart.length === 0) {
+                alert('กรุณาเลือกสินค้าลงตะกร้าก่อนสั่งซื้อครับ');
+                return;
+            }
+            
+            // 1. คำนวณยอดเงินล่าสุด
+            let totalAmount = cart.reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
+            
+            // 2. สร้าง URL สำหรับ QR Code (เปลี่ยนเบอร์โทรเป็นของคุณ)
+            const promptPayID = "0833573456"; 
+            const qrUrl = `https://promptpay.io/${promptPayID}/${totalAmount}.png`;
+            
+            // 3. เอารูปไปใส่ใน Modal
+            document.getElementById('qr-image').src = qrUrl;
+            
+            // 4. แสดง Modal
+            const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+            paymentModal.show();
+        }
+
+        // รันครั้งแรกเมื่อโหลดหน้า
+        renderCart();
+    </script>
+       <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row g-4 small">
+                <div class="col-md-4">
+                    <img src="img/logo/LOGO.png" width="60" class="mb-3 bg-white p-1 rounded">
+                    <p class="text-secondary">วิสาหกิจชุมชนดารานาคี จ.บึงกาฬ 38000</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h6>ติดตามเรา</h6>
+                    <div class="h4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end text-secondary">
+                    <h6>ติดต่อสอบถาม</h6>
+                    <p class="mb-0">โทร: 083-3573456</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-center small text-secondary mb-0">© 2026 Daranakee. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

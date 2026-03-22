@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หมวกแก๊ปหมักโคลนนาคี | DARANAKEE</title> <link rel="icon" type="image/png" href="img/logo/LOGO.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+
+        body { 
+            padding-top: 100px; 
+            font-family: 'Sarabun', sans-serif; 
+            background-color: #fcfcfc; 
+        }
+
+        /* Colors & Layout */
+        .text-orange { color: #ff9800 !important; }
+        .bg-orange { background-color: #ff9800 !important; color: white; }
+        .btn-orange { 
+            background-color: #ff9800; 
+            color: white; 
+            border: none; 
+            transition: all 0.3s; 
+        }
+        .btn-orange:hover { 
+            background-color: #e68a00; 
+            color: white; 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(255,152,0,0.3);
+        }
+
+        /* ปุ่มย้อนกลับ (Fixed Click Issue) */
+        .back-nav {
+            position: relative;
+            z-index: 1050;
+            margin-bottom: 20px;
+        }
+        .btn-back { 
+            text-decoration: none; 
+            color: #555; 
+            display: inline-flex; 
+            align-items: center;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 12px;
+            background: #eee;
+            border-radius: 8px;
+        }
+        .btn-back:hover { 
+            color: #ff9800; 
+            background: #f0f0f0;
+            transform: translateX(-5px); 
+        }
+
+        /* ส่วนแสดงรูปภาพ */
+        .main-img-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .cursor-pointer { cursor: pointer; transition: 0.2s; border: 2px solid transparent; }
+        .cursor-pointer:hover { border-color: #ff9800 !important; opacity: 0.8; }
+
+        /* Specs Box */
+        .specs-box { 
+            background: white; 
+            border-left: 5px solid #ff9800; 
+            border-radius: 12px; 
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 25px 0;
+        }
+        .specs-list { list-style: none; padding-left: 0; margin-bottom: 0; }
+        .specs-list li { 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            color: #444; 
+            font-size: 0.95rem; 
+        }
+        .specs-list li i { color: #28a745; margin-right: 12px; }
+
+        .btn-wishlist.active i { color: #e91e63; font-weight: 900; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo/LOGO.png" width="75" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mx-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.html">เกี่ยวกับเรา</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">สินค้า</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="shop-clothing.html">เสื้อผ้า</a></li>
+                            <li><a class="dropdown-item" href="shop-scarves.html">ผ้าพันคอ</a></li>
+                            <li><a class="dropdown-item" href="shop-cap.html">หมวก</a></li>
+                            <li><a class="dropdown-item" href="shop-Souvenirs.html">ของฝาก/ของที่ระลึก</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="shop.html">สินค้าทั้งหมด</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creators.html">คณะผู้จัดทำ</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="cart.html" class="text-dark position-relative text-decoration-none">
+                        <i class="fas fa-shopping-bag fa-lg"></i>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange badge-cart">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="back-nav">
+            <a href="shop.html" onclick="if(document.referrer) { window.history.back(); return false; }" class="btn-back">
+                <i class="fas fa-arrow-left me-2"></i> ย้อนกลับ
+            </a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4 text-center">
+                <div class="main-img-container mb-3">
+                    <img src="img/ผลิตภัณ/หมวก01.jpg" class="img-fluid w-100" id="mainImage" alt="หมวกแก๊ปนาคี">
+                </div>
+                <div class="row g-2">
+                    <div class="col-3">
+                        <img src="img/ผลิตภัณ/หมวก01.jpg" class="img-fluid rounded-3 cursor-pointer p-1 border" onclick="changeImage(this.src)">
+                    </div>
+                    <div class="col-3">
+                        <img src="img/ผลิตภัณ/หมวก02.jpg" class="img-fluid rounded-3 cursor-pointer p-1 border" onclick="changeImage(this.src)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 ps-md-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="shop.html" class="text-decoration-none text-muted">สินค้าทั้งหมด</a></li>
+                        <li class="breadcrumb-item active text-orange">หมวกแก๊ป</li>
+                    </ol>
+                </nav>
+                
+                <h2 class="fw-bold mb-1" id="p-name">หมวกแก๊ปผ้าฝ้ายหมักโคลนนาคี</h2>
+                <p class="text-muted small mb-3">ภูมิปัญญาบ้านสะง้อ จ.บึงกาฬ สวมใส่สบายสไตล์โมเดิร์น</p>
+                <h3 class="text-orange fw-bold mb-4">฿ <span id="p-price">350</span></h3>
+                
+                <div class="description mb-4">
+                    <p class="text-secondary" style="line-height: 1.8;">
+                        <strong>มรดกแห่งลุ่มแม่น้ำโขง:</strong> หมวกแก๊ปดารานาคี ผลิตจากผ้าฝ้ายทอมือคุณภาพสูงที่ผ่านกรรมวิธี 
+                        <span class="text-orange fw-bold">"หมักโคลนนาคี"</span> สูตรเฉพาะ ช่วยให้เนื้อผ้ามีสัมผัสนุ่มนวล ระบายอากาศดีเยี่ยม สวมใส่เย็นสบายตลอดวัน
+                    </p>
+                </div>
+
+                <div class="specs-box">
+                    <p class="mb-3 fw-bold">คุณสมบัติพิเศษ:</p>
+                    <ul class="specs-list">
+                        <li><i class="fas fa-check"></i> <strong>Natural Soft:</strong> หมักโคลนริมโขง 100% เนื้อผ้านุ่มไม่แข็งกระด้าง</li>
+                        <li><i class="fas fa-check"></i> <strong>Breathable:</strong> ระบายความร้อนได้ดี เหมาะกับอากาศเมืองไทย</li>
+                        <li><i class="fas fa-check"></i> <strong>Sport Design:</strong> ทรงทันสมัย ปรับขนาดได้ (Free Size)</li>
+                        <li><i class="fas fa-check"></i> <strong>Handmade:</strong> งานประณีตจากชุมชน สนับสนุนสินค้าท้องถิ่น</li>
+                    </ul>
+                </div>
+
+                <div class="d-flex gap-3 align-items-center mt-4">
+                    <button id="add-to-cart" class="btn btn-orange btn-lg px-5 py-3 rounded-pill shadow-sm flex-grow-1 fw-bold">
+                        <i class="fas fa-cart-plus me-2"></i> หยิบลงตะกร้า
+                    </button>
+                    <button class="btn btn-outline-dark btn-lg rounded-circle btn-wishlist" onclick="toggleHeart(this)">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+
+                <div class="mt-4 pt-3 border-top">
+                    <p class="small text-muted"><i class="fas fa-shipping-fast me-2"></i> สินค้าพร้อมส่ง | บรรจุหีบห่ออย่างดีเพื่อคงรูปทรงหมวก</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('daranakee_cart')) || [];
+            const badge = document.getElementById('cart-count');
+            if(badge) badge.innerText = cart.length;
+        }
+        updateCartBadge();
+
+        document.getElementById('add-to-cart').addEventListener('click', function() {
+            const product = {
+                name: document.getElementById('p-name').innerText,
+                price: parseInt(document.getElementById('p-price').innerText),
+                img: document.getElementById('mainImage').src
+            };
+
+            let cart = JSON.parse(localStorage.getItem('daranakee_cart')) || [];
+            cart.push(product);
+            localStorage.setItem('daranakee_cart', JSON.stringify(cart));
+            
+            updateCartBadge();
+
+            this.innerHTML = '<i class="fas fa-check me-2"></i> เพิ่มสินค้าแล้ว!';
+            this.classList.replace('btn-orange', 'btn-success');
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-cart-plus me-2"></i> หยิบลงตะกร้า';
+                this.classList.replace('btn-success', 'btn-orange');
+            }, 1000);
+        });
+
+        function toggleHeart(btn) {
+            btn.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fas');
+            icon.classList.toggle('far');
+        }
+    </script>
+       <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row g-4 small">
+                <div class="col-md-4">
+                    <img src="img/logo/LOGO.png" width="60" class="mb-3 bg-white p-1 rounded">
+                    <p class="text-secondary">วิสาหกิจชุมชนดารานาคี จ.บึงกาฬ 38000</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h6>ติดตามเรา</h6>
+                    <div class="h4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end text-secondary">
+                    <h6>ติดต่อสอบถาม</h6>
+                    <p class="mb-0">โทร: 083-3573456</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-center small text-secondary mb-0">© 2026 Daranakee. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
