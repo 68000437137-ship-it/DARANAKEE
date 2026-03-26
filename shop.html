@@ -40,6 +40,103 @@
             margin-bottom: 25px;
         }
         .btn-back:hover { color: #ff9800; background: #f0f0f0; }
+        :root { --orange-main: #ff9800; --orange-hover: #e68a00; }
+        body { font-family: 'Kanit', sans-serif; background-color: #fdfdfd; }
+        
+        .btn-orange { background-color: var(--orange-main); color: white; border: none; transition: 0.3s; }
+        .btn-orange:hover { background-color: var(--orange-hover); color: white; transform: scale(1.02); }
+        .text-orange { color: var(--orange-main) !important; }
+        .bg-orange { background-color: var(--orange-main) !important; }
+        
+        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        
+        /* 1. ปรับขนาด Banner ให้เล็กลง */
+        .hero-img { height: 50vh; object-fit: cover; filter: brightness(0.8); }
+        .hero-caption { bottom: 15%; z-index: 10; }
+
+        .category-img-wrapper { 
+            width: 100px; height: 100px; margin: 0 auto; overflow: hidden; 
+            border-radius: 50%; border: 3px solid #eee; transition: 0.3s;
+        }
+        .category-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 2. ปรับขนาดรูปภาพสินค้าให้เล็กลงและเท่ากัน */
+        .product-card { transition: 0.3s; border-radius: 15px; overflow: hidden; background: white; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+        
+        /* สร้าง Container ล็อกขนาดรูปสินค้า */
+        .product-img-wrapper {
+            height: 220px; /* ปรับความสูงรูปสินค้าที่นี่ */
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* กันรูปเบี้ยว */
+        }
+        
+        .badge-cart { font-size: 0.7rem; }
+    </style>
+     <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .border-orange {
+            border-color: #ff7a00 !important;
+        }
+
+        .text-orange {
+            color: #ff7a00;
+        }
+
+        .social-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px;
+            border-radius: 16px;
+            background: #fff;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .social-box i {
+            font-size: 22px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .fa-line { background: #E8F9F0; color: #06C755; }
+        .fa-facebook-f { background: #E7F0FF; color: #1877F2; }
+        .fa-instagram { 
+            background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+            color: white;
+        }
+        .fa-envelope { background: #FFF3E6; color: #ff7a00; }
+
+        .social-box small {
+            display: block;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .social-box p {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .social-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -79,11 +176,64 @@
             </div>
         </div>
     </nav>
+
     <div class="container py-4">
         <a href="index.html" class="btn-back">
             <i class="fas fa-arrow-left me-2"></i> กลับหน้าหลัก
         </a>
+         <header id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/New folder/0.png" class="d-block w-100 hero-img" alt="Banner">
+                <div class="carousel-caption hero-caption text-start">
+                <h1 class="display-4 fw-bold">ดารานาคี – ผ้าไหมไทยร่วมสมัย</h1>
+                    <p class="lead">ความงดงามของผ้าไหมไทย ที่ออกแบบเพื่อคนรุ่นใหม่</p>
+                </div>
+            </div>
+        </div>
+    </header>
+ <section class="py-4">
+        <div class="container text-center">
+            <div class="row g-4">
+                <div class="col-6 col-md-3"><i class="fas fa-gem text-orange fa-lg mb-2"></i><p class="small mb-0">ผ้าไหมพรีเมียม</p></div>
+                <div class="col-6 col-md-3"><i class="fas fa-leaf text-orange fa-lg mb-2"></i><p class="small mb-0">สีย้อมธรรมชาติ</p></div>
+                <div class="col-6 col-md-3"><i class="fas fa-shipping-fast text-orange fa-lg mb-2"></i><p class="small mb-0">ส่งไว 1-3 วัน</p></div>
+                <div class="col-6 col-md-3"><i class="fas fa-heart text-orange fa-lg mb-2"></i><p class="small mb-0">สนับสนุนชุมชน</p></div>
+            </div>
+        </div>
+    </section>
 
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h4 class="fw-bold mb-4">เลือกซื้อตามหมวดหมู่</h4>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a href="shop-cap.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/ผลิตภัณ/หมวก01.jpg"></div>
+                        <p class="mt-2 fw-bold small">หมวก</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="shop-scarves.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/ผลิตภัณ/ผ้าพันคอ03.jpg"></div>
+                        <p class="mt-2 fw-bold small">ผ้าพันคอ</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="shop-clothing.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/เสื้อผ้า/543121919_813811514515193_299888918633868360_n.jpg"></div>
+                        <p class="mt-2 fw-bold small">เสื้อผ้า</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="shop-Souvenirs.html" class="category-item text-decoration-none text-dark">
+                        <div class="category-img-wrapper"><img src="img/ผลิตภัณ/ยางมัดผม04.jpg"></div>
+                        <p class="mt-2 fw-bold small">ของฝาก</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
         <div class="mb-5">
             <h2 class="fw-bold">คอลเลกชันดารานาคี</h2>
             <p class="text-muted">มรดกแห่งภูมิปัญญาไทย สู่ไลฟ์สไตล์ที่ทันสมัย</p>
@@ -188,13 +338,84 @@
             </div>
 
         </div> </div>
-
-    <footer class="footer pt-5 pb-3 border-top mt-5 bg-white text-center">
+          <section class="py-5 bg-orange text-white text-center">
         <div class="container">
-            <img src="img/logo/LOGO.png" width="80" class="mb-3">
-            <p class="small text-muted">© 2026 Daranakee. All Rights Reserved.</p>
+            <h2 class="fw-bold mb-5">เสียงจากลูกค้า</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="review-card p-4">
+                        <div class="mb-3"><i class="fas fa-star text-warning" v-for="i in 5"></i></div>
+                        <p>"ผ้าไหมสวยมาก เนื้อดี ใส่แล้วดูแพงมาก"</p>
+                        <small>- คุณรินดา</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card p-4">
+                        <div class="mb-3"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></div>
+                        <p>"ส่งไวมาก เป็นของฝากที่ดูดีที่สุดเลยค่ะ"</p>
+                        <small>- คุณเมทินี</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card p-4">
+                        <div class="mb-3"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></div>
+                        <p>"งานตัดเย็บเนี๊ยบมาก ผ้าไม่หด สีไม่ตก"</p>
+                        <small>- คุณสิริ</small>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
+
+<div class="container py-5">
+
+    <h4 class="fw-bold my-4 border-start border-orange border-4 ps-3">
+        ช่องทางออนไลน์
+    </h4>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <a href="#" class="social-box">
+                <i class="fab fa-line"></i>
+                <div>
+                    <small>LINE</small>
+                    <p>daranakee</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <a href="#" class="social-box">
+                <i class="fab fa-facebook-f"></i>
+                <div>
+                    <small>Facebook</small>
+                    <p>ดารานาคี</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <a href="#" class="social-box">
+                <i class="fab fa-instagram"></i>
+                <div>
+                    <small>Instagram</small>
+                    <p>Daranakee.official</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <a href="mailto:daranakee.official@gmail.com" class="social-box">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <small>Email</small>
+                    <p>daranakee.official@gmail.com</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -214,7 +435,7 @@
         <div class="container">
             <div class="row g-4 small">
                 <div class="col-md-4">
-                    <img src="img/logo/LOGO.png" width="60" class="mb-3 bg-white p-1 rounded">
+                    <img src="img/logo/lg2.png" width="60" class="mb-3 bg-white p-1 rounded">
                     <p class="text-secondary">วิสาหกิจชุมชนดารานาคี จ.บึงกาฬ 38000</p>
                 </div>
                 <div class="col-md-4 text-center">
@@ -226,7 +447,7 @@
                 </div>
                 <div class="col-md-4 text-end text-secondary">
                     <h6>ติดต่อสอบถาม</h6>
-                    <p class="mb-0">โทร: 083-3573456</p>
+                    <p class="mb-0">โทร: 09 5168 2778</p>
                 </div>
             </div>
             <hr class="border-secondary">
